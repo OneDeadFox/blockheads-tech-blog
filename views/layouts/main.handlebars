@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockhead's Tech Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="container">
+
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-or-signup" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content text-bg-dark">
+                <div class="modal-header text-bg-dark">
+                    <h1 class="modal-title fs-5" id="login-or-sign-up">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-bg-dark">
+                    <form id="login-form">
+                        <div id="username-line" class="mb-3 text-bg-dark">
+                            <label for="username-input" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username-input" placeholder="Username" aria-label="Username">
+                        </div>
+                        <div id="password-line" class="mb-3 text-bg-dark">
+                            <label for="password-input" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password-input" aria-label="Password">
+                        </div>
+                        <div id="confirm-password-line" class="mb-3 text-bg-dark hidden">
+                            <label for="confirmation-input" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmation-input" aria-label="Confirmation">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex text-bg-dark">
+                    <button type="button" id="sign-up-btn" class="btn btn-dark flex-d sign-up-form">Sign-up</button>
+                    <button type="submit" id="submit-btn" class="btn btn-dark flex-d">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="row navbar navbar-expand-lg py-0 bg-body-tertiary set-height">
+            <div class="container-fluid bg-dark">
+                <a class="navbar-brand text-bg-dark" href="#">
+                    <h3>Blockhead's Tech Blog</h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark" href="#">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" class="nav-link text-bg-dark" data-bs-toggle="modal"
+                                data-bs-target="#login-modal" href="#">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+    <footer class="row set-height">
+        <h5 class="text-center pb-1 text-bg-dark">Designed by the one and only Blockhead</h5>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</html>

@@ -1,22 +1,22 @@
 const User = require(`./User`);
-const Post = require(`./Post`);
-const Comment = require(`./Comment`);
+const Block = require(`./Block`);
+const Bit = require(`./Bit`);
 
-Comment.belongsTo(User, {
-    onDelete: `CASACDE`
+Bit.belongsTo(User, {
+    onDelete: "CASCADE"
 });
-Comment.belongsTo(Post, {
-    onDelete: `CASACDE`
+Bit.belongsTo(Block, {
+    onDelete: "CASCADE"
 });
-Post.belongsTo(User, {
-    onDelete: `CASACDE`
+Block.belongsTo(User, {
+    onDelete: "CASCADE"
 });
-Post.hasMany(Comment);
-User.hasMany(Post);
-User.hasMany(Comment);
+Block.hasMany(Bit);
+User.hasMany(Block);
+User.hasMany(Bit);
 
 module.exports = {
     User,
-    Post,
-    Comment
+    Block,
+    Bit
 }

@@ -1,18 +1,18 @@
 const {Model, DataTypes} = require(`sequelize`);
 const sequelize = require(`../config/connection`);
 
-class Comment extends Model {}
+class Block extends Model {}
 
-Comment.init({
-    creation_date:{
-        type: DataTypes.DATE,
+Block.init({
+    block_title: {
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            isDate: true
+            len: [1, 255]
         }
     },
-    comment: {
-        type: DataTypes.STRING,
+    content: {
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
             len:[1,1279]
@@ -22,4 +22,4 @@ Comment.init({
     sequelize
 });
 
-module.exports = Comment;
+module.exports = Block

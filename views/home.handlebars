@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/style.css">
+<section class="row mt-0">
+    <div class="col-6 bg-dark">
+        <p class="p-3 text-bg-dark">Here is some text</p>
+    </div>
+    <div class="col-6 p-3 bg-dark block-party">
+        {{#each allBlocks}}
+        <section class="d-flex flex-column block-box block-body">
+            <h3 class="flex-fill pb-2 text-bg-dark">{{block_title}}</h3>
+            <p class="flex-fill ps-2 block-body">{{content}}</p>
+            <p class="flex-fill text-end pe-2 pb-1 mb-0 text-bg-dark">-{{User.user_name}} placed a Block</p>
+
+        </section>
+        {{/each}}
+    </div>
+</section>
+
+<script src="/js/home.js"></script>

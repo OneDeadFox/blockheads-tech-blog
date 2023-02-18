@@ -1,8 +1,8 @@
 const express = require(`express`);
-const session = require('express-session');
-const exphbs = require('express-handlebars');
+const session = require(`express-session`);
+const exphbs = require(`express-handlebars`);
 const sequelize = require(`./config/connection`);
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require(`connect-session-sequelize`)(session.Store);
 const allRoutes = require(`./controllers`);
 
 
@@ -22,17 +22,20 @@ const sess = {
     })
 }
 
+app.use(express.static("public"));
+
 app.use(session(sess));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+const hbs = exphbs.create({});
+app.engine(`handlebars`, hbs.engine);
+app.set(`view engine`, `handlebars`);
 
 app.use(allRoutes);
 
-sequelize.sync({force:true}).then(function() {
+sequelize.sync({force:false}).then(function() {
     app.listen(PORT, function() {
         if(PORT == 3030){
             console.log(`App is listening to some dope beats from Deltron${PORT}`);
