@@ -12,6 +12,19 @@ router.get(`/`, async (req, res) => {
     }
 });
 
+router.get(`/block/:id`, async (req, res) => {
+    try{
+        let blockData = await Block.findByPk(req.params.id,{include: [{model: Bit, include: [{model: User}]}, {model: User}]});
+        blockData = blockData.toJSON()
+        blockData.currentUser = req.session.userId;
+        res.json(blockData);
+    } catch(err) {
+        console.log(err);
+        res.status(500).json({msg:`Uh-oh`, err});
+    }
+});
+
+
 router.get(`/:id`, async (req, res) => {
     try {
         const bitDatum = await Bit.findByPk(req.params.id, {include: [{model: User}, {model: Block}]});
@@ -33,7 +46,8 @@ router.post(`/`, async (req, res) => {
             UserId: req.session.userId,
             BlockId: req.body.BlockId
         });
-        return res.json(newBit);
+        //console.log(json(newBit));
+        return res.status(201).json(newBit);
     } catch(err) {
         console.log(err);
         res.status(500).json({msg:`Uh-oh`, err});

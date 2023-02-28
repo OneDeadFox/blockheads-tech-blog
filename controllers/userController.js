@@ -14,6 +14,12 @@ router.get(`/`, async (req, res) => {
     }
 });
 
+//make a loggout alert in place of this for now
+router.get("/logout", (req,res)=>{
+    req.session.destroy();
+    return res.redirect(`/`);
+})
+
 router.get(`/:id`, async (req, res) => {
     try {
         const userDatum = await User.findByPk(req.params.id, {include: [{model: Block}, {model: Bit}]});
@@ -69,10 +75,10 @@ router.post(`/signup`, async (req, res) => {
         });
         req.session.userId = newUser.id;
         req.session.userName = newUser.user_name;
-        res.json(newUser);
+        res.status(201).json(newUser);
     } catch(err) {
         console.log(err);
-        res.status(500).json({msg:`Uh-oh`, err});
+        res.status(500).json({msg:`Uh-oh`, err:err});
     }
 });
 

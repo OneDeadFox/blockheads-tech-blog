@@ -33,7 +33,7 @@ router.post(`/`, async (req, res) => {
             content: req.body.content,
             UserId: req.session.userId
         });
-        return res.json(newBlock);
+        return res.status(201).json(newBlock);
     } catch(err) {
         console.log(err);
         res.status(500).json({msg:`Uh-oh`, err});

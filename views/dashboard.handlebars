@@ -1,1 +1,89 @@
+<link rel="stylesheet" href="/css/style.css">
 
+{{!-- New block modal --}}
+<div class="modal fade modal-height positon-absolute" id="new-block-modal" tabindex="-1" aria-labelledby="block-details" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-bg-dark">
+            <div class="modal-header text-bg-dark">
+                <h1 class="modal-title fs-5" id="new-block-header">New Block</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-white mid-bg">
+                <form id="block-form">
+                    <label for="new-block-title" class="form-lable">Block title:</label>
+                    <input type="text" id="new-block-title" class="form-control">
+                    <label for="new-block" class="form-lable">New Block:</label>
+                    <textarea id="new-block" class="form-control" rows="7"></textarea>
+                </form>
+            </div>
+            <div class="modal-footer d-flex text-bg-dark min-height">
+                <button type="button" id="block-submit-btn" class="block-submit-btn btn btn-dark flex-d">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Block Modal --}}
+<div class="modal fade modal-height positon-absolute" id="block-modal" tabindex="-1" aria-labelledby="block-details" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-bg-dark">
+            <div class="modal-header text-bg-dark">
+                <h1 class="modal-title fs-5" id="block-header"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-0 pb-0 text-white mid-bg">
+                <p id="block-content" class="fw-light ps-2  set-height mid-bg"></p>
+                <p id="block-date" class="fw-light extra-small-font ps-2 set-height mid-bg"></p>
+                <p id="block-user" class="text-end pe-2 mb-1 mid-bg"></p>
+                <form id="bit-form" class="hidden">
+                    <label for="new-bit" class="form-lable">New Bit:</label>
+                    <textarea id="new-bit" class="form-control" rows="7"></textarea>
+                </form>
+                <div id="bits-box">
+                    <p id="bits-label" class="mb-0 pb-1 ps-2 text-bg-dark hidden">Bits:</p>
+                    <div id="block-bits" class="dark-theme bit-container"></div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex text-bg-dark min-height">
+                <button type="button" id="bit-submit-btn-2" class="bit-sub-btn-2 btn btn-dark flex-d hidden">Submit</button>
+                {{#if username}}
+                <button type="button" id="bit-btn" class="btn add-btn btn-dark flex-d">Add Bit</button>
+                {{else}}
+                <p class="text-bg-dark">Login to at your bit</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="row mt-0">
+    <div class="col-6 bg-dark">
+        {{#if username}}
+            <h4 class="p-3 text-bg-dark">Welcome {{username}}</h4>
+        {{/if}}
+    </div>
+    <div class="col-6 p-3 bg-dark block-party">
+        <div id="options-bar" class="d-flex flex-fill justify-content-end text-bg-dark">
+            <button type="button" class="btn p-1 rounded-0 new-block-btn mid-bg" data-bs-toggle="modal" data-bs-target="#new-block-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </button>
+        </div>
+        {{#each myBlocks}}
+        <section id={{id}} class="d-flex flex-column mid-theme dark-theme blog-block">
+            <div class="d-flex p-0 m-0 content-justify-between text-bg-dark">
+                <h3 class="flex-fill pb-2 text-bg-dark">{{block_title}}
+                </h3>
+                <button type="button" id={{id}}-block class="btn-close pt-4 pe-3 block-bye-bye"></button>
+            </div>
+            <p class="flex-fill ps-2 dark-theme">{{content}}</p>
+            <p class="flex-fill p3-2 mb-1 text-end extra-small-font fw-light dark-theme">{{formattedDate}}</p>
+            <p class="flex-fill text-end pe-2 pb-1 mb-0 text-bg-dark">-{{User.user_name}} placed a Block</p>
+
+        </section>
+        {{/each}}
+    </div>
+</section>
+
+<script src="/js/dashboard.js"></script>

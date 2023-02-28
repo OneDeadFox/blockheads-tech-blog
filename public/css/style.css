@@ -2,18 +2,34 @@
     --white: #ffffff;
     --highlight: #adb5bd;
     --midlight: #6c757d;
+    /* --midlight: #6656ac; */
     --shadow: #495057;
     --dark-shadow: #343a40;
     --darkest: #212529;
 }
 
-.block-box {
+/* Themes */
+
+.dark-theme {
+    color: var(--white);
+    background-color: var(--dark-shadow);
+}
+
+.mid-bg {
+    background-color: var(--midlight);
+}
+
+.mid-theme {
     border-bottom: solid 1px var(--midlight);
 }
 
-.block-body {
-    color: var(--white);
-    background-color: var(--dark-shadow);
+/* Containers */
+
+.bit-container {
+    max-height: 35vh; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
 }
 
 .block-party {
@@ -23,17 +39,16 @@
     overflow-y: auto;
     -ms-overflow-style: none;
 }
+
 .hidden {
     display: none;
 }
 
-.left-side {
-    justify-self: flex-start;
+.invalid {
+    border: solid 2px red;
 }
 
-.set-height {
-    height: 8vh;
-}
+
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -50,4 +65,36 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--shadow);
+}
+
+/* Utilities */
+
+.bottom-border{
+    border-bottom: solid 1px var(--midlight);
+}
+
+.left-side {
+    justify-self: flex-start;
+}
+.min-height {
+    min-height: 5%;
+}
+
+.modal-height {
+    max-height: 90vh;
+}
+
+.set-height {
+    max-height: 15vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+}
+
+.small-font {
+    font-size: small;
+}
+
+.extra-small-font {
+    font-size: x-small;
 }

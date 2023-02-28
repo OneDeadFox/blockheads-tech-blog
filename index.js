@@ -35,6 +35,10 @@ app.set(`view engine`, `handlebars`);
 
 app.use(allRoutes);
 
+app.get("/sessions",(req,res)=>{
+    res.json(req.session)
+})
+
 sequelize.sync({force:false}).then(function() {
     app.listen(PORT, function() {
         if(PORT == 3030){

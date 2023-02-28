@@ -11,14 +11,15 @@ User.init({
         allowNull: false,
         unique: true,
         validate:{
-            isAlpha: true
+            isAlpha: true,
+            len: [3]
         }
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len:[8]
+            len: [8]
         }
     },
 },{
